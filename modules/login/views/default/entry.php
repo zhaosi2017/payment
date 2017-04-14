@@ -12,10 +12,10 @@ $this->title = '登录';
     <div>
         <div>
 
-            <h1 class="logo-name">OA</h1>
+            <h1 class="logo-name">&nbsp;</h1>
 
         </div>
-        <h3>第一平台</h3>
+        <h3>未来平台</h3>
 
         <?php $form = ActiveForm::begin([
             'id' => 'login-form',
