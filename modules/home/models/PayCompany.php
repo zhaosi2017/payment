@@ -39,7 +39,7 @@ class PayCompany extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'grade', 'pay_plate_name', 'pay_channel_id'], 'required'],
+            [['name', 'grade', 'pay_plate_name'], 'required'],
             [['is_license', 'status'], 'integer'],
             [['name','license_number'], 'string'],
             [['grade'], 'string', 'max' => 64],
