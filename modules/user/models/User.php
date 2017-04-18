@@ -147,35 +147,17 @@ class User extends CActiveRecord
         return true;
     }
 
-    public function updateBbsAccount($obj)
-    {
-        $db = new Connection([
-            'dsn' => 'mysql:host=localhost;dbname=phpbb',
-            'username' => 'root',
-            'password' => 'OASystem@Yii2+H+',
-            'charset' => 'utf8',
-        ]);
-
-        $updateField = ['user_email_hash'=>1];
-        $obj->email && $updateField['user_email'] = $obj->email;
-        $obj->password && $updateField['user_password'] = file_get_contents('http://localhost/phpbb3/encrypt.php?password='.$obj->password);
-        $db->createCommand()->update('phpbb_users',$updateField,['username'=>$obj->account])->execute();
-        return true;
-    }
-
     public function beforeSave($insert)
     {
         $uid = Yii::$app->user->id ? Yii::$app->user->id : 0;
         $this->update_author_uid = $uid;
         if (parent::beforeSave($insert)) {
             if ($this->isNewRecord) {
-                $this->createBbsAccount($this); //添加论坛用户
                 $this->create_author_uid = $uid;
                 $this->auth_key = Yii::$app->security->generateRandomString();
                 $this->account = base64_encode(Yii::$app->security->encryptByKey($this->account, Yii::$app->params['inputKey']));
                 $this->email && $this->email = base64_encode(Yii::$app->security->encryptByKey($this->email, Yii::$app->params['inputKey']));
             }else{
-                $this->updateBbsAccount($this); //修改论坛用户
                 $this->password && $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
                 $this->account = base64_encode(Yii::$app->security->encryptByKey($this->account, Yii::$app->params['inputKey']));
                 $this->email && $this->email = base64_encode(Yii::$app->security->encryptByKey($this->email, Yii::$app->params['inputKey']));
