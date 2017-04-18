@@ -7,9 +7,9 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * PayChannelSearch represents the model behind the search form about `app\modules\home\models\PayChannel`.
+ * ContactRoleSearch represents the model behind the search form about `app\modules\home\models\ContactRole`.
  */
-class PayChannelSearch extends PayChannel
+class ContactRoleSearch extends ContactRole
 {
     /**
      * @inheritdoc
@@ -17,8 +17,8 @@ class PayChannelSearch extends PayChannel
     public function rules()
     {
         return [
-            [['id', 'status'], 'integer'],
-            [['name', 'source_company'], 'safe'],
+            [['id', 'pay_company_id'], 'integer'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -40,13 +40,13 @@ class PayChannelSearch extends PayChannel
      */
     public function search($params)
     {
-        $query = PayChannel::find();
+        $query = ContactRole::find();
 
         $company_id = Yii::$app->request->get('company_id');
-
         if($company_id){
-            $query->andWhere(['pay_company_id'=>$company_id]);
+            $query->andWhere(['pay_company_id' => $company_id]);
         }
+
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
@@ -64,11 +64,10 @@ class PayChannelSearch extends PayChannel
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'status' => $this->status,
+            'pay_company_id' => $this->pay_company_id,
         ]);
 
-        $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'source_company', $this->source_company]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }

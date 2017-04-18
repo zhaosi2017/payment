@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\home\models\PayChannelSearch */
+/* @var $model app\modules\home\models\ContactUserSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="pay-channel-search">
+<div class="contact-user-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -19,9 +19,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name') ?>
 
-    <?= $form->field($model, 'source_company') ?>
+    <?= $form->field($model, 'remark') ?>
 
-    <?= $form->field($model, 'status') ?>
+    <?= $form->field($model, 'pay_company_id') ?>
+
+    <?= $form->field($model, 'contact_role_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

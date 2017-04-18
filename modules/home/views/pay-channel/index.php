@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\modules\home\models\PayChannelSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = '支付渠道';
+$this->title = '支付日志';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pay-channel-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('新增支付渠道', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('增加接入', ['create','company_id'=>Yii::$app->request->get('company_id')], ['class' => 'btn btn-success']) ?>
     </p>
 <?php Pjax::begin(); ?>
     <?= GridView::widget([
@@ -28,10 +28,44 @@ $this->params['breadcrumbs'][] = $this->title;
             'source_company:ntext',
 //            'status',
 
+            ['header'=>'接入情况', 'format'=>'html', 'value'=>function($model){
+                return $model->remark;
+            }],
+
+            'access_amount',
+            ['header'=>'接入时间', 'value'=>function($model){
+                return date('Y-m-d H:i:s', $model->access_time);
+            }],
+
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => '操作',
-                'template' => '{update} {delete}',
+                'template' => '{switch}',
+                'buttons' => [
+                    'switch' => function($url, $model){
+                        $btn_link = '';
+                        switch ($model->status){
+                            case 0:
+                                $btn_link = Html::a('停止接入',
+                                    $url . '&status=1',
+                                    [
+                                        'style' => 'color:red',
+                                        'data-method' => 'post',
+                                        'data' => ['confirm' => '你确定要停止接入吗?']
+                                    ]);
+                                break;
+                            case 1:
+                                $btn_link = Html::a('恢复接入',
+                                    $url . '&status=0',
+                                    [
+                                        'data-method' => 'post',
+                                        'data' => ['confirm' => '你确定要恢复接入吗?']
+                                    ]);
+                                break;
+                        }
+                        return $btn_link;
+                    },
+                ],
             ],
         ],
     ]); ?>

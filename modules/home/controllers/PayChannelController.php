@@ -66,7 +66,7 @@ class PayChannelController extends GController
         $model = new PayChannel();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index', 'id' => $model->id]);
+            return $this->redirect(['index', 'company_id' => $model->pay_company_id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -104,6 +104,23 @@ class PayChannelController extends GController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    /**
+     * @param $id
+     * @param $status
+     * @return \yii\web\Response
+     */
+    public function actionSwitch($id, $status)
+    {
+        $model = $this->findModel($id);
+        $model->status = $status;
+        if($model->save()){
+            Yii::$app->getSession()->setFlash('success', '操作成功');
+        }else{
+            Yii::$app->getSession()->setFlash('error', '操作失败');
+        }
+        return $this->redirect(['index', 'company_id'=>$model->pay_company_id]);
     }
 
     /**

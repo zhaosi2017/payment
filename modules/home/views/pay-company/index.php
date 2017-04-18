@@ -3,6 +3,8 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use yii\helpers\Url;
+
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\home\models\PayCompanySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -17,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('新增支付公司', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php Pjax::begin(); ?>    <?= GridView::widget([
+    <?= GridView::widget([
         'dataProvider' => $dataProvider,
 //        'filterModel' => $searchModel,
         'columns' => [
@@ -28,22 +30,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'name:ntext',
 
             ['label'=>'有无执照','value'=>function($model){
-                return $model->is_license==0 ? '无' : '有';
+                return empty($model->license) ? '无' : '有';
             }],
 
             ['label'=>'合作级别','value'=>function($model){
                 return $model['gradeLabel'][$model->grade];
             }],
 
-            'control_user',
+            ['label'=>'联系人', 'format'=>'html', 'value' => function($model){
+                return '<a href="'.Url::to(['/home/contact-user/index','company_id'=>$model->id]).'">联系人列表</a>';
+            }],
 
-            ['label'=>'合作支付渠道','value' => function($model){
-
-                $name = '';
-                foreach ($model['channel'] as $item){
-                    $name .= $item['name'] .' ';
-                }
-                return $name;
+            ['label'=>'支付日志', 'format'=>'html', 'value' => function($model){
+                return '<a href="'.Url::to(['/home/pay-channel/index','company_id'=>$model->id]).'">进入</a>';
             }],
 
             [
@@ -53,4 +52,4 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ],
     ]); ?>
-<?php Pjax::end(); ?></div>
+</div>

@@ -3,11 +3,11 @@
 namespace app\modules\home\models;
 
 /**
- * This is the ActiveQuery class for [[PayCompany]].
+ * This is the ActiveQuery class for [[ContactUser]].
  *
- * @see PayCompany
+ * @see ContactUser
  */
-class PayCompanyQuery extends \yii\db\ActiveQuery
+class ContactRoleQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class PayCompanyQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return PayCompany[]|array
+     * @return ContactUser[]|array
      */
     public function all($db = null)
     {
@@ -25,11 +25,10 @@ class PayCompanyQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return PayCompany|array|null
+     * @return ContactUser|array|null
      */
     public function one($db = null)
     {
         return parent::one($db);
     }
-
 }

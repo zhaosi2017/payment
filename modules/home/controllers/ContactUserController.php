@@ -3,17 +3,16 @@
 namespace app\modules\home\controllers;
 
 use Yii;
-use app\modules\home\models\PayCompany;
-use app\modules\home\models\PayCompanySearch;
+use app\modules\home\models\ContactUser;
+use app\modules\home\models\ContactUserSearch;
 use app\controllers\GController;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\web\UploadedFile;
 
 /**
- * PayCompanyController implements the CRUD actions for PayCompany model.
+ * ContactUserController implements the CRUD actions for ContactUser model.
  */
-class PayCompanyController extends GController
+class ContactUserController extends GController
 {
     /**
      * @inheritdoc
@@ -31,12 +30,12 @@ class PayCompanyController extends GController
     }
 
     /**
-     * Lists all PayCompany models.
+     * Lists all ContactUser models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new PayCompanySearch();
+        $searchModel = new ContactUserSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -46,7 +45,7 @@ class PayCompanyController extends GController
     }
 
     /**
-     * Displays a single PayCompany model.
+     * Displays a single ContactUser model.
      * @param integer $id
      * @return mixed
      */
@@ -58,26 +57,16 @@ class PayCompanyController extends GController
     }
 
     /**
-     * Creates a new PayCompany model.
+     * Creates a new ContactUser model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new PayCompany();
+        $model = new ContactUser();
 
-        if ($model->load(Yii::$app->request->post())) {
-
-            $model->file =  UploadedFile::getInstance($model, 'file');
-            if($model->file){   //文件上传大小限制 10M
-                $randName = uniqid() . rand(1000, 9999) . "." . $model->file->extension;
-                $model->license = $randName;
-                $model->file->saveAs(Yii::$app->params['uploadPath'] . $randName);
-                $model->file = null;
-            }
-
-            $model->save();
-            return $this->redirect(['index', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index', 'company_id' => $model->id]);
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -86,7 +75,7 @@ class PayCompanyController extends GController
     }
 
     /**
-     * Updates an existing PayCompany model.
+     * Updates an existing ContactUser model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -95,17 +84,8 @@ class PayCompanyController extends GController
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
-
-            $model->file =  UploadedFile::getInstance($model, 'file');
-            if($model->file){   //文件上传大小限制 10M
-                $randName = uniqid() . rand(1000, 9999) . "." . $model->file->extension;
-                $model->license = $randName;
-                $model->file->saveAs(Yii::$app->params['uploadPath'] . $randName);
-                $model->file = null;
-            }
-            $model->save();
-            return $this->redirect(['index', 'id' => $model->id]);
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
@@ -114,7 +94,7 @@ class PayCompanyController extends GController
     }
 
     /**
-     * Deletes an existing PayCompany model.
+     * Deletes an existing ContactUser model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -127,15 +107,15 @@ class PayCompanyController extends GController
     }
 
     /**
-     * Finds the PayCompany model based on its primary key value.
+     * Finds the ContactUser model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return PayCompany the loaded model
+     * @return ContactUser the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = PayCompany::findOne($id)) !== null) {
+        if (($model = ContactUser::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

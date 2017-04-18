@@ -41,9 +41,7 @@ $module = $this->context->module->id;
                     <li class="">
                         <a class="J_menuItem" href="<?= Url::to(['/home/default/index']) ?>"><i class="fa fa-home"></i> <span class="nav-label">主页</span></a>
                     </li>
-                    <li class="">
-                        <a class="J_menuItem" href="<?= Url::to(['/home/pay-channel/index']) ?>"> <span class="nav-label">支付渠道</span></a>
-                    </li>
+
                     <li class="">
                         <a class="J_menuItem" href="<?= Url::to(['/home/pay-company/index']) ?>"> <span class="nav-label">支付公司</span></a>
                     </li>
@@ -62,10 +60,11 @@ $module = $this->context->module->id;
                     <span>|</span>
                     <a data-method="post" href="<?= Url::to(['/login/default/logout']) ?>">退出</a>
                 </div>
-                <span class="pull-left m-l-md">当前位置：</span>
+<!--                <span class="pull-left m-l-md">当前位置：</span>-->
+                <span class="pull-left m-l-md">未来平台</span>
                 <a>
                     <?php
-                        echo \yii\widgets\Breadcrumbs::widget([
+                        /*echo \yii\widgets\Breadcrumbs::widget([
                             //'tag'=>'h2',
                             // 'homeLink'=>[
                             //    'label'=>'后台首页>>', 修改默认的Home
@@ -76,7 +75,7 @@ $module = $this->context->module->id;
                             'itemTemplate'=>"<span>{link} > </span>",
                             'activeItemTemplate'=>"<span>{link}</span>",
                             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-                        ])
+                        ])*/
                     ?>
                 </a>
             </div>

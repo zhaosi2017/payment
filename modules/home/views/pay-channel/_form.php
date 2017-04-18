@@ -18,9 +18,27 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
+    <?= $form->field($model, 'pay_company_id')->hiddenInput(['value' => Yii::$app->request->get('company_id')])->label(false) ?>
+
     <?= $form->field($model, 'name')->textInput() ?>
 
     <?= $form->field($model, 'source_company')->textInput() ?>
+
+    <?= $form->field($model, 'access_amount')->textInput() ?>
+
+    <?= $form->field($model, 'remark')->widget(\yii\redactor\widgets\Redactor::className(),[
+        'clientOptions' => [
+            'lang' => 'zh_cn',
+            'imageUpload' => false,
+            'fileUpload' => false,
+            'plugins' => [
+                'clips',
+                'fontcolor'
+            ],
+            'placeholder'=>'',
+            'maxlength'=>500
+        ]
+    ]) ?>
 
     <div class="form-group">
         <div class="col-sm-6 col-sm-offset-2">

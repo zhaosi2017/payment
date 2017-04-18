@@ -13,6 +13,8 @@ use yii\db\ActiveRecord;
  * @property string $pay_plate_name
  * @property string $name
  * @property integer $is_license
+ * @property string $license_number
+ * @property string $license
  * @property string $grade
  * @property string $control_user
  * @property string $contact
@@ -20,6 +22,9 @@ use yii\db\ActiveRecord;
  */
 class PayCompany extends ActiveRecord
 {
+
+    public $file;
+
     /**
      * @inheritdoc
      */
@@ -34,10 +39,11 @@ class PayCompany extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'grade', 'control_user', 'pay_plate_name', 'pay_channel_id'], 'required'],
+            [['name', 'grade', 'pay_plate_name', 'pay_channel_id'], 'required'],
             [['is_license', 'status'], 'integer'],
-            [['name','contact'], 'string'],
-            [['grade', 'control_user'], 'string', 'max' => 64],
+            [['name','license_number'], 'string'],
+            [['grade'], 'string', 'max' => 64],
+            [['file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, jpeg, png, bmp', 'maxSize'=>1024*1024*10, 'tooBig'=>'文件上传过大！大小不能超过10M',],
         ];
     }
 
@@ -56,6 +62,8 @@ class PayCompany extends ActiveRecord
             'control_user' => '实际控制人',
             'contact' => '联系方式',
             'status' => '状态',
+            'license' => '上传执照',
+            'license_number' => '执照编号',
         ];
     }
 
