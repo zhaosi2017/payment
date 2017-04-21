@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'class' => 'yii\grid\ActionColumn',
                 'header' => '操作',
-                'template' => '{switch}',
+                'template' => '{update} {switch}',
                 'buttons' => [
                     'switch' => function($url, $model){
                         $btn_link = '';

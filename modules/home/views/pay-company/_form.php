@@ -22,6 +22,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'name')->textInput() ?>
 
+    <?= $form->field($model, 'support_channel')->textInput() ?>
+
+    <?= $form->field($model, 'market_info')->textInput() ?>
+
     <?php //echo $form->field($model, 'is_license')->radioList([1=>'是', 0=>'否']) ?>
 
     <?= $form->field($model, 'grade')->dropDownList([1 => 'A',2 => 'B',3 => 'C',4 => 'D']) ?>

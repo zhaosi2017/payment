@@ -29,6 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'pay_plate_name',
             'name:ntext',
 
+            'support_channel:ntext',
+
+            'market_info:ntext',
+
             ['label'=>'有无执照','value'=>function($model){
                 return empty($model->license) ? '无' : '有';
             }],

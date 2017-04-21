@@ -18,6 +18,8 @@ use yii\db\ActiveRecord;
  * @property string $grade
  * @property string $control_user
  * @property string $contact
+ * @property string $market_info
+ * @property string $support_channel
  * @property integer $status
  */
 class PayCompany extends ActiveRecord
@@ -41,7 +43,7 @@ class PayCompany extends ActiveRecord
         return [
             [['name', 'grade', 'pay_plate_name'], 'required'],
             [['is_license', 'status'], 'integer'],
-            [['name','license_number'], 'string'],
+            [['name','license_number','market_info','support_channel'], 'string'],
             [['grade'], 'string', 'max' => 64],
             [['file'], 'file', 'skipOnEmpty' => true, 'extensions' => 'jpg, jpeg, png, bmp', 'maxSize'=>1024*1024*10, 'tooBig'=>'文件上传过大！大小不能超过10M',],
         ];
@@ -64,6 +66,8 @@ class PayCompany extends ActiveRecord
             'status' => '状态',
             'license' => '上传执照',
             'license_number' => '执照编号',
+            'market_info' => '市场情况',
+            'support_channel' => '支持渠道',
         ];
     }
 
@@ -104,4 +108,5 @@ class PayCompany extends ActiveRecord
     {
         return $this->hasMany(PayChannel::className(),['id'=>'pay_channel_id']);
     }
+
 }

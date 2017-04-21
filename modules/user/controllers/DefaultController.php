@@ -5,6 +5,7 @@ namespace app\modules\user\controllers;
 use app\controllers\GController;
 use app\modules\user\models\PasswordForm;
 use Yii;
+
 /**
  * Default controller for the `user` module
  */
