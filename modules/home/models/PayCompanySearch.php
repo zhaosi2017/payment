@@ -52,7 +52,7 @@ class PayCompanySearch extends PayCompany
             ],
             'sort' => [
                 'defaultOrder' => [
-                    'create_time' => SORT_DESC,
+                    'id' => SORT_DESC,
                 ]
             ],
         ]);
