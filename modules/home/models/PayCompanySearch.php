@@ -2,10 +2,10 @@
 
 namespace app\modules\home\models;
 
-use Yii;
+//use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\home\models\PayCompany;
+//use app\modules\home\models\PayCompany;
 
 /**
  * PayCompanySearch represents the model behind the search form about `app\modules\home\models\PayCompany`.
@@ -47,6 +47,14 @@ class PayCompanySearch extends PayCompany
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'pagination' => [
+                'pageSize' => 15,
+            ],
+            'sort' => [
+                'defaultOrder' => [
+                    'create_time' => SORT_DESC,
+                ]
+            ],
         ]);
 
         $this->load($params);
