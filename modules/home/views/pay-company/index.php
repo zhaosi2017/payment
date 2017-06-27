@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
 //            ['class' => 'yii\grid\SerialColumn'],
             ['class' => 'yii\grid\SerialColumn','header' => '序号'],
-            'id',
+//            'id',
             'pay_plate_name',
             'name:ntext',
 
