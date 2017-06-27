@@ -48,11 +48,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/modules/home/views/pay-company/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+            <state relative-caret-position="315">
+              <caret line="35" column="66" lean-forward="false" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
               <folding>
                 <element signature="e#7#28#0#PHP" expanded="true" />
               </folding>
@@ -60,7 +60,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PayCompanySearch.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PayCompanySearch.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/modules/home/models/PayCompanySearch.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="435">
@@ -157,8 +157,8 @@
         <option value="$PROJECT_DIR$/modules/home/views/pay-company/_form.php" />
         <option value="$PROJECT_DIR$/modules/home/views/pay-channel/index.php" />
         <option value="$PROJECT_DIR$/modules/home/controllers/PayChannelController.php" />
-        <option value="$PROJECT_DIR$/modules/home/views/pay-company/index.php" />
         <option value="$PROJECT_DIR$/modules/home/models/PayCompanySearch.php" />
+        <option value="$PROJECT_DIR$/modules/home/views/pay-company/index.php" />
       </list>
     </option>
   </component>
@@ -475,12 +475,12 @@
       <workItem from="1492749179417" duration="245000" />
       <workItem from="1492776588169" duration="1405000" />
       <workItem from="1498531904623" duration="315000" />
-      <workItem from="1498534057772" duration="883000" />
+      <workItem from="1498534057772" duration="1024000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21724000" />
+    <option name="totallyTimeSpent" value="21865000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="803" extended-state="0" />
@@ -899,22 +899,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/modules/home/views/pay-company/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding>
-            <element signature="e#7#28#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/modules/home/models/PayCompanySearch.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="54" column="23" lean-forward="false" selection-start-line="54" selection-start-column="23" selection-end-line="54" selection-end-column="23" />
           <folding>
             <element signature="e#54#73#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/home/views/pay-company/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="35" column="66" lean-forward="false" selection-start-line="35" selection-start-column="66" selection-end-line="35" selection-end-column="66" />
+          <folding>
+            <element signature="e#7#28#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
